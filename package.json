@@ -1,0 +1,49 @@
+{
+  "name": "dsh-plugin-adwhispr",
+  "version": "0.1.0",
+  "description": "AdWhispr for DeepSeek Harness: see who is running ads in your space, clone a winning ad for your brand, and launch and manage campaigns on Meta, Google and TikTok.",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "dsh",
+    "cordis",
+    "mcp",
+    "adwhispr",
+    "ads",
+    "marketing",
+    "meta-ads",
+    "facebook-ads",
+    "google-ads",
+    "tiktok-ads",
+    "competitor-research",
+    "ad-launch",
+    "ad-management"
+  ],
+  "homepage": "https://adwhispr.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adwhispr/dsh-plugin-adwhispr.git"
+  },
+  "bugs": {
+    "email": "hello@adwhispr.com"
+  },
+  "license": "MIT",
+  "author": "AdWhispr <hello@adwhispr.com>",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": "*"
+  }
+}

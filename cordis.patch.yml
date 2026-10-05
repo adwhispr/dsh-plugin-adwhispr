@@ -1,0 +1,22 @@
+# AdWhispr for DeepSeek Harness (DSH bundle patch).
+# Adds one MCP client row that bridges stdio to https://adwhispr.com/api/mcp
+# with mcp-remote, the same bridge the adwhispr-mcp-server package uses. It
+# opens a browser window to sign in on first use. It is called directly here
+# so the sign-in registers under a DeepSeek Harness name, which is how
+# AdWhispr tells these connections apart from other apps.
+- insert:
+    - id: mcp-adwhispr
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: adwhispr
+        transport: stdio
+        command: npx
+        args:
+          - '-y'
+          - 'mcp-remote@^0.1.38'
+          - 'https://adwhispr.com/api/mcp'
+          - '--static-oauth-client-metadata'
+          - '{"client_name":"DeepSeek Harness (AdWhispr plugin)"}'
+        # AdWhispr's usage guide is ~40 KB; the client's default cap is 32 KB
+        # and an oversized guide rejects the whole connection.
+        maxInstructionBytes: 131072
