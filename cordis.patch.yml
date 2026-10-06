@@ -13,10 +13,16 @@
         command: npx
         args:
           - '-y'
-          - 'mcp-remote@^0.1.38'
+          - 'mcp-remote@^0.1.49'
           - 'https://adwhispr.com/api/mcp'
           - '--static-oauth-client-metadata'
           - '{"client_name":"DeepSeek Harness (AdWhispr plugin)"}'
+          # Keeps this plugin's saved sign-in separate from any other AdWhispr
+          # bridge on the same machine (mcp-remote keys its login cache on the
+          # server URL plus this value), so the DeepSeek name above is always
+          # the one registered.
+          - '--resource'
+          - 'https://adwhispr.com/api/mcp'
         # AdWhispr's usage guide is ~40 KB; the client's default cap is 32 KB
         # and an oversized guide rejects the whole connection.
         maxInstructionBytes: 131072
